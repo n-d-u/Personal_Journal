@@ -1,0 +1,18 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+
+<div class="header">
+    <h3>Come back again!</h3>
+    <a class = 'back' href="{% url 'My Journal' %}">&#10508</a>
+</div>
+
+<br>
+<a href="{% url 'login' %}">Sign In</a>
+
+<br>
+<br>
+
+
+{% endblock content %}

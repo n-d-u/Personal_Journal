@@ -1,0 +1,73 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+
+<div class="header">
+    <div>
+        <h1> Hello! {{request.user|title}}</h1>
+    </div> 
+
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}">Sign Out</a>  
+    {% endif %}
+</div>
+
+
+
+<div class="search-add-wrapper">
+    <form method="GET" style="margin-top:20px;display:  flex;">
+        <input type="text" name="searchbox" value="{{inp}}" placeholder="Search for entries">
+        <input class = "button "type="submit" value="Search">
+    </form>
+    <a id = 'add' href="{% url 'Add' %}">&#10010;</a>
+
+</div>
+
+<!-- 
+<h1>My Journal</h1> -->
+
+
+<div class="entry-list-wrapper">
+
+    {% for entry in entries %}
+    <div class="entry-list">
+    
+        <div class="entry">
+            <a href="{% url 'Edit' entry.id %}">{{entry|title}}</a>
+             
+        </div>
+        <a class='delete' href="{% url 'Delete' entry.id %}">&#10007</a>
+    </div>
+    
+    {% empty %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <h3>No entries uploaded.</h3>
+        <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'Add' %}">New Entry</a> ! </h3>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- 
+<table>
+
+    <tr>
+        <th>My Entries</th>
+        <th></th>
+    </tr>
+    {% for entry in entries %}
+        <tr>
+            <td>{{entry}}</td>
+            <td><a href="{% url 'Entries Details' entry.id %}">Open</a></td>
+            <td><a href="{% url 'Edit' entry.id %}">Edit</a></td>
+            <td><a href="{% url 'Delete' entry.id %}">Delete</a></td>
+        </tr>
+    {% empty %}
+        <td>No Entries Found</td>
+    {% endfor %}
+    
+</table> -->
+
+{% endblock content %}
+

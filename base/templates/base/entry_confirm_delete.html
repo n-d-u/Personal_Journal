@@ -1,0 +1,22 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+
+<div class="header">
+    <h3>Delete</h3>
+    <a class = 'back' href="{% url 'My Journal' %}">&#10508</a>
+</div>
+
+<div class="form-body">
+    <form method = 'POST'>
+        <p>"{{entry}}" journal entry will be deleted. Are you sure?</p>
+    
+        <input class='button' value="Confirm" type="submit">
+        {% csrf_token %}
+    </form>
+
+</div>
+
+
+{% endblock content %}
